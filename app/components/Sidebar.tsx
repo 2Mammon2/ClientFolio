@@ -10,7 +10,7 @@ function Sidebar() {
 						<img src={logo} alt="Logo" className="h-25" />
 					</div>
 					<div className="author-name mt-[10px]">
-						<h3 className="text-[22px] text-[#eaeaea]">N.T.H (Mammon)</h3>
+						<h3 className="text-[22px] text-[#eaeaea]">N.T.H(Mammon)</h3>
 					</div>
 					<div className="author-description mt-[10px] mb-[20px]">
 						<h3 className="text-[16.5px] mt-[10px] text-[#eaeaea] line-clamp-2">
