@@ -62,28 +62,28 @@ function MainContent() {
 					Quick links to popular content can be found below:
 				</b>
 				<ul className="list-disc list-inside mt-8 ml-8">
-                    {data && !loading ? (
-                        data
-                            .filter(
-                                (item) =>
-                                    item.category.toLowerCase() === "pentest" ||
-                                    item.category.toLowerCase() === "soc"
-                            )
-                            .slice(0, 3)
-                            .map((post) => (
-                                <li key={post._id} className="text-[18px] mb-2">
-                                    <Link
-                                        to={/post/${post._id}}
-                                        className="text-[#699da0] underline hover:text-[#4a7b8c]"
-                                    >
-                                        {post.title}
-                                    </Link>
-                                </li>
-                            ))
-                    ) : (
-                        <Loading lines={3} />
-                    )}
-                </ul>
+					{data && !loading ? (
+						data
+							.filter(
+								(item) =>
+									item.category.toLowerCase() === "pentest" ||
+									item.category.toLowerCase() === "soc"
+							)
+							.slice(0, 3)
+							.map((post) => (
+								<li key={post._id} className="text-[18px] mb-2">
+									<Link
+										to={`/post/${post._id}`}
+										className="text-[#699da0] underline hover:text-[#4a7b8c]"
+									>
+										{post.title}
+									</Link>
+								</li>
+							))
+					) : (
+						<Loading lines={3} />
+					)}
+				</ul>
 			</div>
 			<div>
 				<h2
@@ -94,25 +94,34 @@ function MainContent() {
 				</h2>
 				<ul className="list-disc list-inside mt-8 ml-8 flex flex-col gap-4">
 					{visiblePosts && !loading ? (
-						visiblePosts.map((post) => (
-							<li key={post._id} className="text-[18px] mb-2">
-								<Link to={`/post/${post._id}`} className="flex flex-col gap-2">
-									<h2 className="text-[#699da0] underline hover:text-[#4a7b8c] text-[26px] font-bold">
-										{post.title}
-									</h2>
+						visiblePosts
+							.filter(
+								(item) =>
+									item.category.toLowerCase() === "pentest" ||
+									item.category.toLowerCase() === "soc"
+							)
+							.map((post) => (
+								<li key={post._id} className="text-[18px] mb-2">
+									<Link
+										to={`/post/${post._id}`}
+										className="flex flex-col gap-2"
+									>
+										<h2 className="text-[#699da0] underline hover:text-[#4a7b8c] text-[26px] font-bold">
+											{post.title}
+										</h2>
 
-									<div className="text-[13px] flex items-center gap-1 opacity-70">
-										<i className="fa-solid fa-calendar-days"></i>
-										<span>{formatDate(post.createdAt)}</span>
-									</div>
+										<div className="text-[13px] flex items-center gap-1 opacity-70">
+											<i className="fa-solid fa-calendar-days"></i>
+											<span>{formatDate(post.createdAt)}</span>
+										</div>
 
-									<div
-										className="line-clamp-2 text-[16px]"
-										dangerouslySetInnerHTML={{ __html: post.content }}
-									/>
-								</Link>
-							</li>
-						))
+										<div
+											className="line-clamp-2 text-[16px]"
+											dangerouslySetInnerHTML={{ __html: post.content }}
+										/>
+									</Link>
+								</li>
+							))
 					) : (
 						<Loading lines={3} />
 					)}
