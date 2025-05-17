@@ -62,21 +62,28 @@ function MainContent() {
 					Quick links to popular content can be found below:
 				</b>
 				<ul className="list-disc list-inside mt-8 ml-8">
-					{data && !loading ? (
-						data.slice(0, 3).map((post) => (
-							<li key={post._id} className="text-[18px] mb-2">
-								<Link
-									to={`/post/${post._id}`}
-									className="text-[#699da0] underline hover:text-[#4a7b8c]"
-								>
-									{post.title}
-								</Link>
-							</li>
-						))
-					) : (
-						<Loading lines={3} />
-					)}
-				</ul>
+                    {data && !loading ? (
+                        data
+                            .filter(
+                                (item) =>
+                                    item.category.toLowerCase() === "pentest" ||
+                                    item.category.toLowerCase() === "soc"
+                            )
+                            .slice(0, 3)
+                            .map((post) => (
+                                <li key={post._id} className="text-[18px] mb-2">
+                                    <Link
+                                        to={/post/${post._id}}
+                                        className="text-[#699da0] underline hover:text-[#4a7b8c]"
+                                    >
+                                        {post.title}
+                                    </Link>
+                                </li>
+                            ))
+                    ) : (
+                        <Loading lines={3} />
+                    )}
+                </ul>
 			</div>
 			<div>
 				<h2
