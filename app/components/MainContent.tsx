@@ -22,7 +22,7 @@ function MainContent() {
 	const recentPostsRef = useRef<HTMLHeadingElement | null>(null);
 
 	const POSTS_PER_PAGE = 5;
-	const paginatedData = data.slice(3); // remove first 3 "Quick links"
+	const paginatedData = data.length > 3 ? data.slice(3) : data;
 	const start = (currentPage - 1) * POSTS_PER_PAGE;
 	const end = start + POSTS_PER_PAGE;
 	const visiblePosts = paginatedData.slice(start, end);
@@ -66,8 +66,12 @@ function MainContent() {
 						data
 							.filter(
 								(item) =>
-									item.category.toLowerCase() === "pentest" ||
-									item.category.toLowerCase() === "soc"
+									Array.isArray(item.category) &&
+									item.category.some(
+										(cat) =>
+											typeof cat === "string" &&
+											["pentest", "soc"].includes(cat.trim().toLowerCase())
+									)
 							)
 							.slice(0, 3)
 							.map((post) => (
@@ -97,8 +101,12 @@ function MainContent() {
 						visiblePosts
 							.filter(
 								(item) =>
-									item.category.toLowerCase() === "pentest" ||
-									item.category.toLowerCase() === "soc"
+									Array.isArray(item.category) &&
+									item.category.every(
+										(cat) =>
+											typeof cat === "string" &&
+											!["pentest", "soc"].includes(cat.trim().toLowerCase())
+									)
 							)
 							.map((post) => (
 								<li key={post._id} className="text-[18px] mb-2">

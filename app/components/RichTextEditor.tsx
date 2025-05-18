@@ -1,4 +1,5 @@
 import { Editor } from "@tinymce/tinymce-react";
+import { useIsClient } from "~/utils/useIsClient";
 
 interface RichTextEditorProps {
 	content: string;
@@ -9,6 +10,10 @@ export default function RichTextEditor({
 	content,
 	setContent,
 }: RichTextEditorProps) {
+	const isClient = useIsClient();
+
+	if (!isClient) return null;
+
 	return (
 		<Editor
 			apiKey="loyjdbz9liml36pag0kmbd0yrtomxak1dsqxayw7mahktd4f"
