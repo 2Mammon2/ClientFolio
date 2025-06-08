@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "@fortawesome/fontawesome-free/css/all.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
 @theme {
 	--font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
@@ -9,6 +10,10 @@
 html,
 body {
 	@apply bg-[#252A34] text-white;
+}
+
+body {
+  font-family: 'Roboto Mono', monospace;
 }
 
 button {
@@ -46,10 +51,18 @@ button:disabled {
 	cursor: not-allowed;
 }
 
-h2 {
-	font-size: 16px !important;
+h1 {
+	font-size: 32px ;
 }
 
-h1 {
-	font-size: 28px !important;
+h2 {
+	font-size: 24px;
+}
+
+h3 {
+	font-size: 20px ;
+}
+
+p {
+	font-size: 16px ;
 }
