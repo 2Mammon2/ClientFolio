@@ -11,7 +11,7 @@ export type Info = {
   parents: [Parent0],
   id: "routes/AdminDELETE"
   file: "routes/AdminDELETE.tsx"
-  path: "/admin/delete-post/:id"
+  path: "/admin/delete/:id"
   params: {"id": string} & { [key: string]: string | undefined }
   module: Module
   loaderData: T.CreateLoaderData<Module>

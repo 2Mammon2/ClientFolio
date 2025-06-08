@@ -13,10 +13,10 @@ type Params = {
     "id": string;
   };
   "/admin": {};
-  "/admin/post/:id": {
+  "/admin/update/:id": {
     "id": string;
   };
-  "/admin/delete-post/:id": {
+  "/admin/delete/:id": {
     "id": string;
   };
   "/tags": {};
