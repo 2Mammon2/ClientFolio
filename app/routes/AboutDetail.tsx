@@ -69,7 +69,7 @@ const AboutDetail = () => {
 				{!loading && (
 					<div className="mt-[22px] w-3/4 ml-[50px] mb-[50px] flex flex-col gap-2 pr-[200px]">
 						<h1 className="page-title text-[26px] font-bold">{data.title}</h1>
-						<p className="text-[14px] mb-4 flex items-center gap-2">
+						<p className="text-[14px] mb-8 flex items-center gap-2">
 							<i className="fa-solid fa-calendar-days"></i>
 							<span>{formatDate(data.createdAt)}</span>
 						</p>
