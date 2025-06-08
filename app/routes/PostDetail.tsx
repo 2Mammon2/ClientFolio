@@ -27,7 +27,7 @@ export function meta({}: Route.MetaArgs) {
 	];
 }
 
-const AboutDetail = () => {
+const PostDetail = () => {
 	const { id } = useParams<{ id: string }>();
 	const [data, setData] = useState<Post | null>(null);
 	const [loading, setLoading] = useState(true);
@@ -133,4 +133,4 @@ const AboutDetail = () => {
 	);
 };
 
-export default AboutDetail;
+export default PostDetail;

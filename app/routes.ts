@@ -8,7 +8,7 @@ export default [
   },
   {
     path: "/post/:id",
-    file: "routes/AboutDetail.tsx",
+    file: "routes/PostDetail.tsx",
   },
   {
     path: "/tags",

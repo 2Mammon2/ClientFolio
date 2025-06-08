@@ -12,6 +12,8 @@ type Params = {
   "/post/:id": {
     "id": string;
   };
+  "/tags": {};
+  "/categories": {};
   "/admin": {};
   "/admin/update/:id": {
     "id": string;
@@ -19,6 +21,4 @@ type Params = {
   "/admin/delete/:id": {
     "id": string;
   };
-  "/tags": {};
-  "/categories": {};
 };
