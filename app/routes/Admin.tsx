@@ -4,6 +4,7 @@ import DefaultLayout from "~/components/DefaultLayout";
 import RichTextEditor from "~/components/RichTextEditor";
 import TagInput from "~/components/TagInput";
 import type { Route } from "./+types/home";
+import { useNavigate } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -23,18 +24,21 @@ const Admin = () => {
   const [content, setContent] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     try {
       e.preventDefault();
       setLoading(true); // start loading
 
-      api.post("/post", {
+      const newPost = await api.post("/post", {
         title,
         content,
         tag,
         category,
       });
+
+      const newPostId = newPost.data.data.posts.slice(-1)[0]._id;
 
       setMessage("✅ Post created successfully!");
 
@@ -44,10 +48,7 @@ const Admin = () => {
       setCategory([]);
       setContent("");
 
-      scrollTo(0, 0); // Scroll to top of the page
-
-      // ✅ Hide alert after 3 seconds
-      setTimeout(() => setMessage(""), 3000);
+      navigate(`/post/${newPostId}`);
     } catch (err) {
       console.error(err);
       setMessage("❌ Failed to create post.");

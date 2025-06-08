@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import api from "~/api";
 import DefaultLayout from "~/components/DefaultLayout";
 import RichTextEditor from "~/components/RichTextEditor";
@@ -29,6 +29,7 @@ const AdminPUT = () => {
     text: string;
     isError: boolean;
   } | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     api
@@ -59,11 +60,8 @@ const AdminPUT = () => {
         category,
       });
 
-      console.log({ title, content, tag, category });
-
       setMessage({ text: "✅ Post updated successfully!", isError: false });
-      scrollTo(0, 0); // Scroll to top of the page
-      setTimeout(() => setMessage(null), 3000);
+      navigate(`/post/${id}`);
     } catch (err) {
       console.error(err);
       setMessage({ text: "❌ Failed to update post.", isError: true });
