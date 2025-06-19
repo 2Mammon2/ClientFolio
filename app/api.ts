@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-	baseURL: "https://serverfolio-production.up.railway.app/api",
+	baseURL: "https://serverfolio.onrender.com/",
 	headers: {
 		"Content-Type": "application/json",
 	},
